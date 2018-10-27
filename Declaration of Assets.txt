@@ -1,0 +1,3 @@
+Self Made assets are in the imported models folder
+
+I made all the roads in Sketchup, the boost sound effect came from the Universal SFX pack. I made the HeatGenerationController, SpecialAbilitiesController, TempGaugeController, and the TerrainCheck scripts. Everything else is from unity.
