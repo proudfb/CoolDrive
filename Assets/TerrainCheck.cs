@@ -10,15 +10,12 @@ public class TerrainCheck : MonoBehaviour {
     private bool isFlying = false;
     private float TimeStartedFlying;
     private float TimeStoppedFlying;
-    private float CoolingFactor;
 
 	// Use this for initialization
 	void Start () {
         parentObj = this.gameObject;
         Debug.Log("Attached to " + parentObj.ToString());
-        CoolingFactor = parentObj.GetComponent<HeatGenerationController>().BaseCoolingFactor;
-
-    }
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,7 +29,7 @@ public class TerrainCheck : MonoBehaviour {
                 //get the time we stopped flying
                 TimeStoppedFlying = Time.time;
                 Debug.Log("Heat reduced by "+ ((TimeStartedFlying-TimeStoppedFlying)*400).ToString());
-                parentObj.GetComponent<HeatGenerationController>().ChangeHeat((TimeStartedFlying - TimeStoppedFlying), (CoolingFactor*100));
+                parentObj.GetComponent<HeatGenerationController>().ChangeHeat((TimeStartedFlying - TimeStoppedFlying), 400);
 
             }
             //Debug.Log("Hit " + lastHit.transform.gameObject.tag);

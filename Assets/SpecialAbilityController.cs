@@ -4,26 +4,45 @@ using UnityEngine;
 
 public class SpecialAbilityController : MonoBehaviour {
 
-    private HeatGenerationController heatGen;
-    private AudioSource rocketBoost;
-    public float BoostForce = 10;
-	// Use this for initialization
-	void Start () {
-        //get the reference to our heat generator controller
-        heatGen = gameObject.GetComponent<HeatGenerationController>();
-        rocketBoost = gameObject.GetComponent<AudioSource>();
+    //The lists of abilities that we need to watch for. initialized at runtime.
+    private List<Ability_ab> abilities = new List<Ability_ab>();
+    private List<LongAbility_ab> longAbilities = new List<LongAbility_ab>();
+
+    public float OverclockAccel = 100;
+    public float heatScalar = 1;
+
+
+	// Called after all the Start() functions are called.
+	void Awake () {
+        foreach (Ability_ab ability in gameObject.GetComponents<Ability_ab>()){
+            if (ability is LongAbility_ab)//if the ability is a long ability
+            {
+                longAbilities.Add(ability as LongAbility_ab);//add it to our list of long abilities
+            }
+            else //our ability is a short ability, so add it to the respective list
+            {
+                abilities.Add(ability);
+            }
+        }
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+	void FixedUpdate () {
+        foreach (Ability_ab ability in abilities)
         {
-            //ROCKET BOOST YEAH
-            gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward*BoostForce, ForceMode.VelocityChange);
-            //AUDIO YEAH
-            rocketBoost.Play();
-            //OVERHEAT YEAH
-            heatGen.ChangeHeat(40, 1);
+            if (Input.GetAxis(ability.AxisName)>0)
+            {
+                ability.ActivateAbility();
+            }
+        }
+
+        //Overclock
+        //Debug.Log("Overclock key is signalling:"+Input.GetAxis("Fire1").ToString());
+        if (Input.GetKey(KeyCode.V))
+        {
+            //gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * OverclockAccel * Time.deltaTime, ForceMode.Acceleration);
+            //heatGen.ChangeHeat(.125f, heatScalar);
         }
 	}
 }
