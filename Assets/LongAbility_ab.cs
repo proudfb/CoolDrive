@@ -11,7 +11,8 @@ public abstract class LongAbility_ab : Ability_ab {
     /// <summary>
     /// How long does this ability last, in seconds?
     /// </summary>
-    [SerializeField] private readonly float abilityDuration;
+    [SerializeField] private float abilityDuration;
+
 
     protected float abilityTimeLeft = 0f;
 
@@ -38,7 +39,7 @@ public abstract class LongAbility_ab : Ability_ab {
 
     private void FixedUpdate()
     {
-        timerText.text = String.Format("{0:S} ready in: {0:F3} seconds", abilityName, Cooldown());
+        timerText.text = String.Format("{0:S} ready in: {1:F3} seconds", abilityName, Cooldown());
         if (abilityIsActive)
         {
             Ability();

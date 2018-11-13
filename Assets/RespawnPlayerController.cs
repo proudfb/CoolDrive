@@ -3,22 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RespawnPlayerController : MonoBehaviour {
+    public Vector3 LastCheckpoint { get; private set; }
 
-    private Vector3 lastCheckpoint;
-    private Quaternion lastCheckpointRotation;
-
-    public Vector3 LastCheckpoint
-    {
-        get { return lastCheckpoint; }
-    }
-
-    public Quaternion LastCheckpointRotation
-    {
-        get
-        {
-            return lastCheckpointRotation;
-        }
-    }
+    public Quaternion LastCheckpointRotation { get; private set; }
 
     public Rigidbody rb;
 
@@ -26,8 +13,8 @@ public class RespawnPlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        lastCheckpoint = new Vector3(135.5f, 0.1f, 77.5f);
-        lastCheckpointRotation = Quaternion.Euler(0, 0, 0);
+        LastCheckpoint = new Vector3(135.5f, 0.1f, 77.5f);
+        LastCheckpointRotation = Quaternion.Euler(0, 0, 0);
         rb = GetComponent<Rigidbody>();
 	}
 	

@@ -40,6 +40,7 @@ public abstract class Ability_ab : MonoBehaviour {
 
     public string AxisName { get { return axisName; } }
     public float CooldownTimeLeft { get { return cooldownTimeLeft; } }
+    public bool AbilityIsActive { get { return abilityIsActive; } }
 
     /// <summary>
     /// A method that defines what the ability will do. ActivateAbility() handles the abilityIsActive fields and activating the cooldown.

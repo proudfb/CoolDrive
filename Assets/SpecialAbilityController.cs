@@ -31,18 +31,26 @@ public class SpecialAbilityController : MonoBehaviour {
 	void FixedUpdate () {
         foreach (Ability_ab ability in abilities)
         {
-            if (Input.GetAxis(ability.AxisName)>0)
+            if (Input.GetButtonDown(ability.AxisName))
             {
                 ability.ActivateAbility();
             }
         }
 
+        foreach (LongAbility_ab lAbility in longAbilities)
+        {
+            if (Input.GetButtonDown(lAbility.AxisName))
+            {
+                lAbility.ToggleAbility();
+            }
+        }
+
         //Overclock
         //Debug.Log("Overclock key is signalling:"+Input.GetAxis("Fire1").ToString());
-        if (Input.GetKey(KeyCode.V))
-        {
-            //gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * OverclockAccel * Time.deltaTime, ForceMode.Acceleration);
-            //heatGen.ChangeHeat(.125f, heatScalar);
-        }
-	}
+        //if (Input.GetKey(KeyCode.V))
+        //{
+        //    //gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * OverclockAccel * Time.deltaTime, ForceMode.Acceleration);
+        //    //heatGen.ChangeHeat(.125f, heatScalar);
+        //}
+    }
 }
