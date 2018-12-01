@@ -18,7 +18,7 @@ public class RollAirControl : BasicAbility_ab {
         if (tcheck.IsFlying)
         {
             //Debug.Log("ROTATE!");
-            gameObject.GetComponent<Rigidbody>().AddRelativeTorque(0, 0, Input.GetAxis(AxisName) * RollControlScalar * Time.deltaTime, ForceMode.Acceleration);
+            gameObject.GetComponent<Rigidbody>().AddRelativeTorque(0, 0, -(Input.GetAxis(AxisName) * RollControlScalar * Time.deltaTime), ForceMode.Acceleration); //invert to ensure proper rolling
         }
     }
 }

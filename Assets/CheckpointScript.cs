@@ -1,0 +1,26 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CheckpointScript : MonoBehaviour {
+
+    private Vector3 Position;
+    private Quaternion Rotation;
+
+    //With 0 as the start/finish, which checkpoint is this?
+    public int CheckpointNumber;
+
+	// Use this for initialization
+	void Awake () {
+        Position = this.transform.position;
+        Rotation = this.transform.rotation;
+	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag=="Player")//if the object was a player
+        {
+            other.GetComponentInParent<PlayerCheckpoint>().OnCrossCheckpoint(CheckpointNumber, Position, Rotation);
+        }
+    }
+}
