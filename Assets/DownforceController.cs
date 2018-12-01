@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverclockController : LongAbility_ab {
+public class DownforceController : LongAbility_ab {
 
-    [SerializeField] private float overclockFactor=10;
+    [SerializeField] private float downforceFactor = 10;
     private HeatGenerationController heatGen;
 
     void Start()
@@ -15,13 +15,13 @@ public class OverclockController : LongAbility_ab {
 
     public override void ActivateAbility()
     {
-        this.abilityIsActive = true;
+        this.abilityIsActive = true;//set the ability to "active"
         this.abilityTimeLeft = abilityDuration;//set the duration
     }
 
     protected override void Ability()
     {
-        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * overclockFactor * Time.deltaTime, ForceMode.Acceleration);
+        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.down*downforceFactor, ForceMode.Impulse);
         heatGen.ChangeHeat(heatGenerated, heatScalar);
     }
 }

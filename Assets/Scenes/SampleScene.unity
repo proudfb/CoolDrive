@@ -965,6 +965,7 @@ RectTransform:
   - {fileID: 725149961}
   - {fileID: 1787645120}
   - {fileID: 1714930214}
+  - {fileID: 1917915878}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1229,8 +1230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1516247492b5647943d1b4be9a8133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OverclockAccel: 100
-  heatScalar: 1
 --- !u!82 &613475228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1341,7 +1340,6 @@ MonoBehaviour:
   abilityName: Boost
   cooldownTimeBase: 5
   heatGenerated: 40
-  heatScalar: 1
   timerText: {fileID: 1787645121}
   BoostForce: 100
 --- !u!114 &613475230
@@ -1371,15 +1369,27 @@ MonoBehaviour:
   abilityName: Overclock
   cooldownTimeBase: 10
   heatGenerated: 0.125
-  heatScalar: 1
   timerText: {fileID: 1714930215}
   abilityDuration: 10
+  debug_Status: {fileID: 0}
   overclockFactor: 10
 --- !u!54 &613475232 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 5400000, guid: 0e7ee4df08df88c4880f43398f9ad2c2,
     type: 2}
   m_PrefabInternal: {fileID: 613475221}
+--- !u!114 &613475233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 613475224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c7b5d2f4b901e4ea74cd2f32c9c71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeatScalar: 1
 --- !u!114 &613475234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1404,53 @@ MonoBehaviour:
   rotationThreshold: 1
   cameraStickiness: 10
   cameraRotationSpeed: 5
+--- !u!114 &613475235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 613475224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27484a6856f7a649bc017eb32b4d574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Vertical
+  abilityName: Pitch Control
+  pitchControlScalar: 30
+--- !u!114 &613475236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 613475224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113b4ed269a7c0941b2bfbd089f24ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Horizontal
+  abilityName: Roll Control
+  YawControlScalar: 30
+--- !u!114 &613475237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 613475224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e286a559da328d345966d8df34164067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Fire4
+  abilityName: Downforce
+  cooldownTimeBase: 10
+  heatGenerated: 0.375
+  timerText: {fileID: 1917915879}
+  abilityDuration: 2
+  debug_Status: {fileID: 0}
+  downforceFactor: 10
 --- !u!1 &619785718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,8 +1459,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 619785720}
-  - component: {fileID: 619785719}
-  - component: {fileID: 619785721}
   m_Layer: 0
   m_Name: UIController
   m_TagString: Untagged
@@ -1411,17 +1466,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &619785719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 619785718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &619785720
 Transform:
   m_ObjectHideFlags: 0
@@ -1435,17 +1479,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &619785721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 619785718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96216fd207ad5b348b1d02c3de027f59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &650675369
 Prefab:
   m_ObjectHideFlags: 0
@@ -3179,7 +3212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528460693}
-  - component: {fileID: 1528460692}
   - component: {fileID: 1528460694}
   m_Layer: 0
   m_Name: GameController
@@ -3188,17 +3220,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1528460692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1528460691}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd254a831a389ca48b0e66721b2909c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1528460693
 Transform:
   m_ObjectHideFlags: 0
@@ -3223,7 +3244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3533b69ba69144f819f21ce59f10c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeatScalar: -2
+  HeatScalar: 1
 --- !u!1 &1586889170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3949,6 +3970,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4615869705833844, guid: ba72fe458c6f0af459c2368aa2528d04,
     type: 2}
   m_PrefabInternal: {fileID: 1898771726}
+--- !u!1 &1917915877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917915878}
+  - component: {fileID: 1917915880}
+  - component: {fileID: 1917915879}
+  m_Layer: 5
+  m_Name: DownforceText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1917915878
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917915877}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 536763883}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -385, y: 227}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1917915879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917915877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: DOWNFORCE TIMER GOES HERE
+--- !u!222 &1917915880
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917915877}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1917981458
 Prefab:
   m_ObjectHideFlags: 0

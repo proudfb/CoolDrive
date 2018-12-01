@@ -7,33 +7,42 @@ public class SpecialAbilityController : MonoBehaviour {
     //The lists of abilities that we need to watch for. initialized at runtime.
     private List<Ability_ab> abilities = new List<Ability_ab>();
     private List<LongAbility_ab> longAbilities = new List<LongAbility_ab>();
-
-    public float OverclockAccel = 100;
-    public float heatScalar = 1;
-
+    private List<BasicAbility_ab> basicAbilities = new List<BasicAbility_ab>();
 
 	// Called after all the Start() functions are called.
 	void Awake () {
-        foreach (Ability_ab ability in gameObject.GetComponents<Ability_ab>()){
+        foreach (BasicAbility_ab ability in gameObject.GetComponents<BasicAbility_ab>()){
             if (ability is LongAbility_ab)//if the ability is a long ability
             {
                 longAbilities.Add(ability as LongAbility_ab);//add it to our list of long abilities
             }
-            else //our ability is a short ability, so add it to the respective list
+            else if (ability is Ability_ab)//if our ability has a cooldown, add it to the respective list
             {
-                abilities.Add(ability);
+                abilities.Add(ability as Ability_ab);
+            }
+            else //our ability is an inherent ability, so add it to the respective list
+            {
+                basicAbilities.Add(ability);
             }
         }
-
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
         foreach (Ability_ab ability in abilities)
         {
             if (Input.GetButtonDown(ability.AxisName))
             {
                 ability.ActivateAbility();
+            }
+        }
+
+        foreach (BasicAbility_ab Bability in basicAbilities)
+        {
+            //Debug.Log("The axis I'm geting is called: " + Bability.AxisName);
+            if (Input.GetAxis(Bability.AxisName) != 0)
+            {
+                //Debug.Log("SHOULD BE ROTATING!");
+                Bability.ActivateAbility();
             }
         }
 

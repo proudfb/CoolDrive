@@ -11,14 +11,15 @@ public class TerrainCheck : MonoBehaviour {
     private float TimeStartedFlying;
     private float TimeStoppedFlying;
 
+    public bool IsFlying { get { return isFlying; } }
+
 	// Use this for initialization
 	void Start () {
         parentObj = this.gameObject;
         Debug.Log("Attached to " + parentObj.ToString());
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (Physics.Raycast(parentObj.transform.position, parentObj.transform.TransformVector(Vector3.down), out lastHit, 1f)) //if we hit something
         {
             if (isFlying)
