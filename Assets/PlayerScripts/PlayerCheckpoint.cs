@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerCheckpoint : MonoBehaviour {
     public int LastCheckpointCrossed { get; private set; }
@@ -35,6 +36,13 @@ public class PlayerCheckpoint : MonoBehaviour {
         if (LapCounter != null)
         {
             LapCounter.text = string.Format("Current lap: {0:D}/{1:D}", LapCount, GameController.TotalLapCount);
+            if (LapCount>GameController.TotalLapCount)
+            {
+                //we've finished, so go back to the main scene
+                SceneManager.LoadScene(1, LoadSceneMode.Single);
+
+                //TODO: add hook for finishing place info
+            }
         }
     }
 
