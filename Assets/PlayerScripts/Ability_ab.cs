@@ -7,7 +7,8 @@ using UnityEngine.UI;
 /// <summary>
 /// Defines an ability that lasts for one frame. Requires Ability() to be implemented by descendent classes.
 /// </summary>
-public abstract class Ability_ab : BasicAbility_ab {
+public abstract class Ability_ab : BasicAbility_ab
+{
 
     protected bool abilityIsActive = false;
     protected bool abilityIsReady = true;
@@ -58,7 +59,7 @@ public abstract class Ability_ab : BasicAbility_ab {
             Ability();
             abilityIsActive = false;
             //timeSinceLastActive = Time.time;
-            ActivateCooldown(); 
+            ActivateCooldown();
         }
     }
 
@@ -80,7 +81,7 @@ public abstract class Ability_ab : BasicAbility_ab {
     {
         if (!abilityIsReady)
         {
-            if (CooldownTimeLeft<=0f)
+            if (CooldownTimeLeft <= 0f)
             {
                 cooldownTimeLeft = 0f;
                 abilityIsReady = true;

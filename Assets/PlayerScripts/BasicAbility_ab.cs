@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class BasicAbility_ab : MonoBehaviour {
+public abstract class BasicAbility_ab : MonoBehaviour
+{
     //ovverride the activate ability and activate cooldown methods, since inherent abilities don't have either. ActivateAbility is now an alias for Ability()
 
     /// <summary>

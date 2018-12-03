@@ -7,7 +7,8 @@ using UnityEngine.UI;
 /// <summary>
 /// Defines an ability that lasts for more than one frame. Inherits from AbilityAbstract
 /// </summary>
-public abstract class LongAbility_ab : Ability_ab {
+public abstract class LongAbility_ab : Ability_ab
+{
 
     /// <summary>
     /// How long does this ability last, in seconds?
@@ -34,7 +35,8 @@ public abstract class LongAbility_ab : Ability_ab {
         }
         else //abilityIsActive is false
         {
-            if(abilityIsReady){
+            if (abilityIsReady)
+            {
                 ActivateAbility();
             }
         }
@@ -42,13 +44,13 @@ public abstract class LongAbility_ab : Ability_ab {
 
     private void FixedUpdate()
     {
-        timerText.text = String.Format("{0:S} ready in: {1:F3} seconds", abilityName, Cooldown());
-        debug_Status.text = String.Format("{0:S} Ready: {1:S}\n" +
+        timerText.text = string.Format("{0:S} ready in: {1:F3} seconds", abilityName, Cooldown());
+        debug_Status.text = string.Format("{0:S} Ready: {1:S}\n" +
             "Active: {2:S}", abilityName, AbilityIsReady, AbilityIsActive);
         if (abilityIsActive)
         {
             Ability();
-            if (abilityTimeLeft>0)//if there is time remaining,
+            if (abilityTimeLeft > 0)//if there is time remaining,
             {
                 abilityTimeLeft -= Time.deltaTime;//decrement it so that we don't get infinite abilities.
             }

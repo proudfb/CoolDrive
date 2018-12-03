@@ -39,7 +39,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
-    descriptiveName: 
+    descriptiveName: Overdrive
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: left ctrl
@@ -295,7 +295,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire4
-    descriptiveName: 
+    descriptiveName: Downforce
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: e
