@@ -51,18 +51,22 @@ public class PlayerCheckpoint : MonoBehaviour
         }
     }
 
-    public void OnCrossCheckpoint(int checkNum, Vector3 pos, Quaternion rot)
+    public void OnCrossCheckpoint(int checkNum, Vector3 pos, Quaternion rot, AudioSource audio = null)
     {
         Debug.Log("LastCheckpointCrossed+1 = " + (LastCheckpointCrossed + 1).ToString());
+        //if the checkpoint we crossed was the next one in sequence, update our last crossed checkpoint
         if (checkNum - 1 == LastCheckpointCrossed)
         {
             Debug.Log("Updating last crossed checkpoint to " + checkNum);
-            LastCheckpointCrossed = checkNum;//if the checkpoint we crossed was the next one in sequence, update our last crossed checkpoint
+            LastCheckpointCrossed = checkNum;
+            if (audio!=null && audio.enabled)
+            {
+                audio.Play();
+            }
             respawn.UpdateCheckpoint(pos, rot);
         }
         else if (((LastCheckpointCrossed + 1) == totalCheckpoints) && checkNum == 0)//if we are crossing the finish line in sequence
         {
-            Debug.Log("Can you see me?");
             LapCount++;
             LastCheckpointCrossed = checkNum;
             respawn.UpdateCheckpoint(pos, rot);

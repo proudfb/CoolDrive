@@ -7,6 +7,7 @@ public class CheckpointScript : MonoBehaviour
 
     private Vector3 Position;
     private Quaternion Rotation;
+    private AudioSource soundCue;
 
     //With 0 as the start/finish, which checkpoint is this?
     public int CheckpointNumber;
@@ -16,6 +17,7 @@ public class CheckpointScript : MonoBehaviour
     {
         Position = this.transform.position;
         Rotation = this.transform.rotation;
+        soundCue = gameObject.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +25,7 @@ public class CheckpointScript : MonoBehaviour
         if (other.tag == "Player")//if the object was a player
         {
             Debug.Log("Player crossed checkpoint " + this.CheckpointNumber);
-            other.GetComponentInParent<PlayerCheckpoint>().OnCrossCheckpoint(CheckpointNumber, Position, Rotation);
+            other.GetComponentInParent<PlayerCheckpoint>().OnCrossCheckpoint(CheckpointNumber, Position, Rotation, soundCue);
         }
     }
 }
